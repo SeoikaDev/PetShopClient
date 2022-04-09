@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -8,14 +9,27 @@ import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   validateForm!: FormGroup;
-  captchaTooltipIcon: NzFormTooltipIcon = {
-    type: 'info-circle',
-    theme: 'twotone'
-  };
+
+  constructor(private fb: FormBuilder, private userService : UserService) { }
+
+  ngOnInit(): void {
+    this.validateForm = this.fb.group({ 
+      username: [null, [Validators.required]],
+      fullname: [null],
+      email: [null, [Validators.email, Validators.required]],
+      password: [null, [Validators.required]],
+      verification_code: [null, [Validators.required, this.confirmationValidator]],
+      phoneNumberPrefix: ['+84'],
+      phoneNumber: [null, [Validators.required]],
+      agree: [false]
+    });
+  }
 
   submitForm(): void {
     if (this.validateForm.valid) {
+      this.userService.register(this.validateForm.value);
       console.log('submit', this.validateForm.value);
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
@@ -43,21 +57,5 @@ export class RegisterComponent implements OnInit {
 
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();
-  }
-
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]],
-      checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      nickname: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false]
-    });
   }
 }

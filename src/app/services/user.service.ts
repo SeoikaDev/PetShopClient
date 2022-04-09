@@ -10,8 +10,8 @@ import { Observable, throwError } from 'rxjs';
 export class UserService {
   helper = new JwtHelperService();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  url = "http://localhost:3000";
-  constructor(private http : HttpClient,public router: Router) { }
+  url = "http://localhost:5000";
+  constructor(private http : HttpClient, public router: Router) { }
 
   login(form : any){
     // const decodedToken = this.helper.decodeToken(myRawToken);
@@ -22,13 +22,24 @@ export class UserService {
     return this.http.post<any>(api, form)
         .subscribe((res : any) => {
           localStorage.setItem('access_token', res.data);
-          this.router.navigate(['/']);
+          if(res.status === 'ok'){
+            this.router.navigate(['/']);
+          }
           console.log(res);
         });
   }
 
-  register(form : any) : Observable<any>{
-    return this.http.post(this.url + "api/v1/sign-up", form);
+  sendMail(mail : any){
+    this.http.post(this.url + "/api/v1/send-mail", mail);
+  }
+
+  register(form : any) {
+    this.http.post<any>(this.url + "/api/v1/sign-up", form).subscribe(
+      resp => {
+        if(resp.status === 'ok'){
+          this.router.navigate(['/']);
+        }
+      });
   }
 
   // Error
