@@ -1,0 +1,27 @@
+<div style="background: #ececec; padding: 30px">
+    <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="8" *ngFor="let item of products; index">
+            <nz-card style="margin-bottom: 10px" [nzTitle]="productTitle" [nzCover]="coverTemplate">
+                <p>{{ item.name }}</p>
+                <ng-template #coverTemplate>
+                    <img alt="example" [src]="item.image" />
+                </ng-template>
+                <ng-template #productTitle>
+                    <div nz-row>
+                        <div nz-col nzFlex="4">{{ item.category }}</div>
+                        <div nz-col nzFlex="1">
+                            <button nz-button (click)="addCart(item)">
+                <i
+                  style="font-size: 20px; color: #08c"
+                  nz-icon
+                  nzType="shopping-cart"
+                  nzTheme="outline"
+                ></i>
+              </button>
+                        </div>
+                    </div>
+                </ng-template>
+            </nz-card>
+        </div>
+    </div>
+</div>

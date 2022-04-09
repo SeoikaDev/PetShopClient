@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
@@ -24,6 +24,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authenticantion.guard';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { environment } from 'src/environments/environment';
+
 
 registerLocaleData(en);
 
@@ -35,6 +38,7 @@ registerLocaleData(en);
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -50,9 +54,11 @@ registerLocaleData(en);
     NzButtonModule,
     NzSelectModule,
     NzCheckboxModule,
+    NzCardModule,
   ],
-  providers: [AuthenticationGuard, { provide: NZ_I18N, useValue: en_US }, {
-    provide: HTTP_INTERCEPTORS,
+  providers: [AuthenticationGuard, 
+    {provide: NZ_I18N, useValue: en_US},
+    {provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }],
