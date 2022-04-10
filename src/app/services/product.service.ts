@@ -13,7 +13,6 @@ export class ProductService {
 
   getProducts(){
     let api = `${this.url}/api/v1/products`;
-  
     return this.http.get<any>(api);
   }
 
