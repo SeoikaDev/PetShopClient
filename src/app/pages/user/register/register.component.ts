@@ -12,7 +12,8 @@ export class RegisterComponent implements OnInit {
 
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService : UserService) { }
+  constructor(private fb: FormBuilder, 
+    private userService : UserService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({ 

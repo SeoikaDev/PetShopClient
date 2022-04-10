@@ -5,6 +5,8 @@ import { OrderComponent } from './pages/admin/order/order.component';
 import { ProductComponent } from './pages/admin/product/product.component';
 import { ServiceAdminComponent } from './pages/admin/service-admin/service-admin.component';
 import { UserComponent } from './pages/admin/user/user.component';
+import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
+import { FavoriteComponent } from './pages/user/favorite/favorite.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { ServiceComponent } from './pages/user/service/service.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'login', component : LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'service', component: ServiceComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'favorite', component: FavoriteComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'admin/home', component: IndexComponent },
   { path: 'admin/product', component: ProductComponent },

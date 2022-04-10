@@ -13,16 +13,30 @@
                         <a routerLink="/home">Trang chủ</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="/shoppingcart">Giỏ hàng</a>
+                        <a routerLink="/favorite">Sản phẩm yêu thích</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/shoppingcart">Giỏ hàng</a>
+                    </li>
+                </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Tài khoản" nzIcon="user">
+                <ul>
+                    <li *ngIf="isLogin" nz-menu-item nzMatchRouter>
                         <a routerLink="/login">Đăng nhập</a>
+                    </li>
+                    <li *ngIf="!isLogin" nz-menu-item nzMatchRouter>
+                        <a (click)="logout()">Đăng xuất</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
                         <a routerLink="/register">Đăng ký</a>
                     </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/change-password">Thay đổi mật khẩu</a>
+                    </li>
                 </ul>
             </li>
+
             <li nz-submenu nzOpen nzTitle="Dịch vụ" nzIcon="customer-service">
                 <ul>
                     <li nz-menu-item nzMatchRouter>

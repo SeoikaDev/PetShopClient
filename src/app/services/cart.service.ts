@@ -7,15 +7,15 @@ import { HttpClient} from '@angular/common/http';
 })
 export class CartService {
   api = environment.apiEndpoint;
-
+  list : any[] = [];
   constructor(private http : HttpClient) { }
 
   addCart(product : any){
-    const ProductModel = {
+    let ProductModel = {
       id : product._id,
       amount : 1,
     }
-    return this.http.post<any>(this.api + "cart", ProductModel);
+    return this.http.post<any>(this.api + "cart",  ProductModel);
   }
 
   deleteCart(id : any){
@@ -23,7 +23,7 @@ export class CartService {
   }
 
   clearCart(){
-
+    return this.http.delete<any>(this.api + "cart/delete-all");
   }
 }
 

@@ -48,6 +48,14 @@ export class WelcomeComponent implements OnInit {
     });
   }
 
+  addFavorite(id : any){
+    this.productService.addFavorite(id).subscribe(resp =>{
+      if(resp.status == 'ok'){
+        this.message.create('success', 'Yêu thích thành công');
+      }
+    });
+  }
+
   addCart(product : any){
     this.cartService.addCart(product).subscribe((res : any) => {
       if(res.status === 'ok'){

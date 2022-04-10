@@ -40,6 +40,8 @@ import { ProductComponent } from './pages/admin/product/product.component';
 import { UserComponent } from './pages/admin/user/user.component';
 import { ServiceAdminComponent } from './pages/admin/service-admin/service-admin.component';
 import { OrderComponent } from './pages/admin/order/order.component';
+import { FavoriteComponent } from './pages/user/favorite/favorite.component';
+import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
 
 
 registerLocaleData(en);
@@ -56,6 +58,8 @@ registerLocaleData(en);
     UserComponent,
     ServiceAdminComponent,
     OrderComponent,
+    FavoriteComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

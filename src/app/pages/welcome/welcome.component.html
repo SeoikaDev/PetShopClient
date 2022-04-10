@@ -3,12 +3,14 @@
         <div nz-col [nzSpan]="8" *ngFor="let item of products; index">
             <nz-card style="margin-bottom: 10px" [nzTitle]="productTitle" [nzCover]="coverTemplate">
                 <p>{{ item.name }}</p>
+                <h4>{{ item.price | currency: "VND":"symbol" }}</h4>
                 <ng-template #coverTemplate>
                     <img alt="example" [src]="item.image" />
                 </ng-template>
                 <ng-template #productTitle>
                     <div nz-row>
-                        <div nz-col nzFlex="4">{{ item.category }}</div>
+                        <div nz-col nzFlex="3">{{ item.category }}</div>
+
                         <div nz-col nzFlex="1">
                             <button nz-button (click)="addCart(item)">
                 <i
@@ -19,9 +21,19 @@
                 ></i>
               </button>
                         </div>
+                        <div nz-col nzFlex="1">
+                            <button nz-button (click)="addFavorite(item._id)">
+                            <i nz-icon nzType="heart" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
+                      </button>
+                        </div>
                     </div>
                 </ng-template>
             </nz-card>
         </div>
     </div>
 </div>
+<!-- <div nz-col nzFlex="1">
+    <button nz-button (click)="addFavorite(item._id)">
+      <i nz-icon nzType="heart" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
+</button>
+</div> -->

@@ -14,7 +14,7 @@ export class UserService {
   url = "http://localhost:5000";
   
   constructor(private http : HttpClient, 
-    public router: Router,
+    private router: Router,
     private message: NzMessageService) { }
 
   getCurrentUserListCart() : Observable<any>{
@@ -33,7 +33,7 @@ export class UserService {
           localStorage.setItem('access_token', res.data);
           if(res.status === 'ok'){
             this.message.create('success', 'Đăng nhập thành công');
-            this.router.navigate(['/']);
+            window.location.href = "/";
           }
           else{
             this.message.create('warning', 'Đăng nhập thất bại');
@@ -41,6 +41,11 @@ export class UserService {
           console.log(res);
         });
   }
+
+  repeat(){
+    console.log("Before Print");
+  }
+
 
   sendMail(mail : any){
     this.http.post(this.url + "/api/v1/send-mail", mail);

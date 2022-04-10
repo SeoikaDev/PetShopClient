@@ -48,4 +48,14 @@ export class ProductService {
     });
   }
 
+  addFavorite(id : any){
+    let api = `${this.url}/api/v1/favorite`;
+    return this.http.post<any>(api, id);
+  }
+
+  deleteFavorite(id : any){
+    let api = `${this.url}/api/v1/favorite`;
+    return this.http.delete<any>(api, id);
+  }
+
 }
