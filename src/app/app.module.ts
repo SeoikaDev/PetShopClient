@@ -42,6 +42,7 @@ import { ServiceAdminComponent } from './pages/admin/service-admin/service-admin
 import { OrderComponent } from './pages/admin/order/order.component';
 import { FavoriteComponent } from './pages/user/favorite/favorite.component';
 import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
+import { HistoryComponent } from './pages/user/history/history.component';
 
 
 registerLocaleData(en);
@@ -60,6 +61,7 @@ registerLocaleData(en);
     OrderComponent,
     FavoriteComponent,
     ChangePasswordComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

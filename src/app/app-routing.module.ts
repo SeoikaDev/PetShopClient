@@ -7,6 +7,7 @@ import { ServiceAdminComponent } from './pages/admin/service-admin/service-admin
 import { UserComponent } from './pages/admin/user/user.component';
 import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
 import { FavoriteComponent } from './pages/user/favorite/favorite.component';
+import { HistoryComponent } from './pages/user/history/history.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { ServiceComponent } from './pages/user/service/service.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'service', component: ServiceComponent },
   { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'history', component: HistoryComponent },
   { path: 'favorite', component: FavoriteComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'admin/home', component: IndexComponent },

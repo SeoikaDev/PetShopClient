@@ -50,7 +50,6 @@ export class UserService {
   sendMail(mail : any){
     this.http.post(this.url + "/api/v1/send-mail", mail);
     this.message.create('success', 'Gửi email thành công. Vui lòng kiểm tra email');
-
   }
 
   register(form : any) {
