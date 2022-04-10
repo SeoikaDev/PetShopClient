@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     NzGridModule,
     NzIconModule,
     NzButtonModule,
+    NzPaginationModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig) // Your config

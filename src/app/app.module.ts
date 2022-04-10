@@ -26,6 +26,13 @@ import { AuthenticationGuard } from './guard/authenticantion.guard';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { environment } from 'src/environments/environment';
+import { ShoppingcartComponent } from './pages/user/shoppingcart/shoppingcart.component';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 
 registerLocaleData(en);
@@ -35,6 +42,7 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ShoppingcartComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +63,12 @@ registerLocaleData(en);
     NzSelectModule,
     NzCheckboxModule,
     NzCardModule,
+    NzMessageModule,
+    NzPaginationModule,
+    NzTableModule,
+    NzDividerModule,
+    NzBadgeModule,
+    NzInputNumberModule,
   ],
   providers: [AuthenticationGuard, 
     {provide: NZ_I18N, useValue: en_US},

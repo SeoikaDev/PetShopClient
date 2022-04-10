@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -11,7 +12,15 @@ export class UserService {
   helper = new JwtHelperService();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   url = "http://localhost:5000";
-  constructor(private http : HttpClient, public router: Router) { }
+  
+  constructor(private http : HttpClient, 
+    public router: Router,
+    private message: NzMessageService) { }
+
+  getCurrentUserListCart() : Observable<any>{
+    let api = `${this.url}/api/v1/users/current-user`;
+    return this.http.get<any>(api);
+  }
 
   login(form : any){
     // const decodedToken = this.helper.decodeToken(myRawToken);
@@ -23,7 +32,11 @@ export class UserService {
         .subscribe((res : any) => {
           localStorage.setItem('access_token', res.data);
           if(res.status === 'ok'){
+            this.message.create('success', 'Đăng nhập thành công');
             this.router.navigate(['/']);
+          }
+          else{
+            this.message.create('warning', 'Đăng nhập thất bại');
           }
           console.log(res);
         });
@@ -31,12 +44,15 @@ export class UserService {
 
   sendMail(mail : any){
     this.http.post(this.url + "/api/v1/send-mail", mail);
+    this.message.create('success', 'Gửi email thành công. Vui lòng kiểm tra email');
+
   }
 
   register(form : any) {
     this.http.post<any>(this.url + "/api/v1/sign-up", form).subscribe(
       resp => {
         if(resp.status === 'ok'){
+          this.message.create('success', 'Đăng ký thành công');
           this.router.navigate(['/']);
         }
       });
@@ -48,10 +64,11 @@ export class UserService {
     if (error.error instanceof ErrorEvent) {
       // client-side error
       msg = error.error.message;
-    } else {
-      // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
+      } else {
+        // server-side error
+        this.message.create('warning', 'Đăng ký thất bại');
+        msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
     return throwError(msg);
   }
 

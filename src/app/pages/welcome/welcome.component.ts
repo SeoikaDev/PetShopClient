@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { DomSanitizer} from '@angular/platform-browser'
 import { UploadService } from 'src/app/services/upload.service';
+import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-welcome',
@@ -11,6 +14,7 @@ import { UploadService } from 'src/app/services/upload.service';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  cart = [];
   products : any = [];
   image !: Observable<any>;
   listImage  = ["/product_image/house/img_product_house_6.jpg",
@@ -25,7 +29,10 @@ export class WelcomeComponent implements OnInit {
 
   constructor(private productService : ProductService,
     private storage: AngularFireStorage,
-    public sanitizer: DomSanitizer) {
+    public sanitizer: DomSanitizer,
+    private cartService : CartService,  
+    private userService : UserService,
+    private message: NzMessageService) {
 
     }
 
@@ -41,6 +48,25 @@ export class WelcomeComponent implements OnInit {
     });
   }
 
+  addCart(product : any){
+    this.cartService.addCart(product).subscribe((res : any) => {
+      if(res.status === 'ok'){
+        this.userService.getCurrentUserListCart()
+        .subscribe((res : any) => { 
+          if(res.status === 'ok'){  
+            
+            this.message.create('success', 'Thêm vào giỏ hàng thành công');
+            this.cart = res.cart;
+          }
+          else{
+            this.message.create('warning', 'Thêm vào giỏ hàng thất bại');
+          }
+          console.log(res);
+        });
+      }
+    });
+  }
+
   displayImage(imageRef : any) {
     // let img = `/product_image/clothes/${imageRef}`;
     const ref = this.storage.ref(imageRef);
@@ -51,8 +77,5 @@ export class WelcomeComponent implements OnInit {
     // console.log(ref.getDownloadURL);
   }
 
-  addCart(product : any){
-    console.log(product);
-  }
 
 }
