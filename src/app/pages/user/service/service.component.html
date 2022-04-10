@@ -1,0 +1,23 @@
+<div style="background: #ececec; padding: 30px">
+    <div nz-row [nzGutter]="8">
+        <div *ngFor="let item of services" nz-col [nzSpan]="8">
+            <nz-card style="margin-bottom: 10px" [nzTitle]="item.type" [nzExtra]="extraTemplate">
+                <p>{{ item.name }}</p>
+                <p>{{ item.price | currency: "VND":"symbol" }}</p>
+            </nz-card>
+        </div>
+    </div>
+</div>
+<ng-template #extraTemplate>
+    <button nz-button [nzType]="'primary'" (click)="showModal()">
+    <span>Đặt dịch vụ</span>
+  </button>
+</ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <p>Content one</p>
+        <p>Content two</p>
+        <p>Content three</p>
+    </ng-container>
+</nz-modal>

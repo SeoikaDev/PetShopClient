@@ -7,23 +7,46 @@
             </a>
         </div>
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+            <li nz-submenu nzOpen nzTitle="Home" nzIcon="home">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="/welcome">Welcome</a>
+                        <a routerLink="/home">Trang chủ</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Monitor</a>
+                        <a routerLink="/shoppingcart">Giỏ hàng</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Workplace</a>
+                        <a routerLink="/login">Đăng nhập</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/register">Đăng ký</a>
                     </li>
                 </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+            <li nz-submenu nzOpen nzTitle="Dịch vụ" nzIcon="customer-service">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Basic Form</a>
+                        <a routerLink="/service">Dịch vụ</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li nz-submenu nzOpen nzTitle="Trang quản trị" nzIcon="form">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/home">Trang chủ</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/user">Quản lý user</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/product">Quản lý sản phẩm</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/order">Quản lý đơn hàng</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="/admin/service">Quản lý dịch vụ</a>
                     </li>
                 </ul>
             </li>

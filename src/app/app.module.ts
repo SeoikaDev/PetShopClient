@@ -33,6 +33,13 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { ServiceComponent } from './pages/user/service/service.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { IndexComponent } from './pages/admin/index/index.component';
+import { ProductComponent } from './pages/admin/product/product.component';
+import { UserComponent } from './pages/admin/user/user.component';
+import { ServiceAdminComponent } from './pages/admin/service-admin/service-admin.component';
+import { OrderComponent } from './pages/admin/order/order.component';
 
 
 registerLocaleData(en);
@@ -43,6 +50,12 @@ registerLocaleData(en);
     LoginComponent,
     RegisterComponent,
     ShoppingcartComponent,
+    ServiceComponent,
+    IndexComponent,
+    ProductComponent,
+    UserComponent,
+    ServiceAdminComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +82,7 @@ registerLocaleData(en);
     NzDividerModule,
     NzBadgeModule,
     NzInputNumberModule,
+    NzModalModule,
   ],
   providers: [AuthenticationGuard, 
     {provide: NZ_I18N, useValue: en_US},
