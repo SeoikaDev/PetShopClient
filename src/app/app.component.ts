@@ -57,4 +57,7 @@ export class AppComponent implements OnInit{
     this.router.navigate(['/shoppingcart']);
   }
 
+  notify(): void {
+    console.log('notify');
+  }
 }

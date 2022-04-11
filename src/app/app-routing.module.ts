@@ -9,6 +9,7 @@ import { ChangePasswordComponent } from './pages/user/change-password/change-pas
 import { FavoriteComponent } from './pages/user/favorite/favorite.component';
 import { HistoryComponent } from './pages/user/history/history.component';
 import { LoginComponent } from './pages/user/login/login.component';
+import { ProductDetailComponent } from './pages/user/product-detail/product-detail.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { ServiceComponent } from './pages/user/service/service.component';
 import { ShoppingcartComponent } from './pages/user/shoppingcart/shoppingcart.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'service', component: ServiceComponent },
   { path: 'change-password', component: ChangePasswordComponent },
+  { path: 'product/detail/:id', component: ProductDetailComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'favorite', component: FavoriteComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
@@ -27,7 +29,7 @@ const routes: Routes = [
   { path: 'admin/product', component: ProductComponent },
   { path: 'admin/service', component: ServiceAdminComponent },
   { path: 'admin/user', component: UserComponent },
-  { path: 'admin/order', component: OrderComponent }
+  { path: 'admin/order', component: OrderComponent },
 
 
 

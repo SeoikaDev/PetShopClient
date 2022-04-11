@@ -5,7 +5,8 @@
                 <p>{{ item.name }}</p>
                 <h4>{{ item.price | currency: "VND":"symbol" }}</h4>
                 <ng-template #coverTemplate>
-                    <img alt="example" [src]="item.image" />
+                    <a class="wrapper" [href]="'/product/detail/' + item._id">
+                        <img alt="example" [src]="item.image" /></a>
                 </ng-template>
                 <ng-template #productTitle>
                     <div nz-row>
@@ -23,8 +24,13 @@
                         </div>
                         <div nz-col nzFlex="1">
                             <button nz-button (click)="addFavorite(item._id)">
-                            <i nz-icon nzType="heart" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
-                      </button>
+                <i
+                  nz-icon
+                  nzType="heart"
+                  [nzTheme]="'twotone'"
+                  [nzTwotoneColor]="'#eb2f96 '"
+                ></i>
+              </button>
                         </div>
                     </div>
                 </ng-template>
@@ -34,6 +40,6 @@
 </div>
 <!-- <div nz-col nzFlex="1">
     <button nz-button (click)="addFavorite(item._id)">
-      <i nz-icon nzType="heart" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb2f96'"></i>
+      <i nz-icon nzType="heart" [nzTheme]="'twotone '" [nzTwotoneColor]="'#eb2f96 '"></i>
 </button>
 </div> -->

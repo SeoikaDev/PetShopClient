@@ -19,13 +19,12 @@
             </td>
             <td>{{ data.product.price | currency: "VND":"symbol" }}</td>
             <td>
-                <nz-input-number (ngModelChange)="changeQuantity($event)" [(ngModel)]="data.amount" [nzSize]="'large'" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+                <nz-input-number (ngModelChange)="changeQuantity(data.product, $event)" [(ngModel)]="data.amount" [nzSize]="'large'" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
             </td>
             <td>{{ data.product.discount }}%</td>
             <td>
                 {{ (100 * data.amount * data.product.price * (1 - 0.01 * data.product.discount)) / 100 | currency: "VND":"symbol" }}
             </td>
-
             <td>
                 <button (click)="deleteProduct(data._id)" nz-button nzDanger nzType="primary">
           <i nz-icon nzType="delete" nzTheme="outline"></i>
@@ -34,6 +33,8 @@
         </tr>
     </tbody>
 </nz-table>
+
+<p>Tổng số tiền: {{ total | currency: "VND":"symbol" }}</p>
 <button (click)="clearCart()" nz-button nzDanger nzType="primary">
   Xóa hết
   <i nz-icon nzType="clear" nzTheme="outline"></i>

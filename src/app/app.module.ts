@@ -43,6 +43,8 @@ import { OrderComponent } from './pages/admin/order/order.component';
 import { FavoriteComponent } from './pages/user/favorite/favorite.component';
 import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
 import { HistoryComponent } from './pages/user/history/history.component';
+import { ProductDetailComponent } from './pages/user/product-detail/product-detail.component';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 
 
 registerLocaleData(en);
@@ -62,6 +64,8 @@ registerLocaleData(en);
     FavoriteComponent,
     ChangePasswordComponent,
     HistoryComponent,
+    ProductDetailComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -89,6 +93,7 @@ registerLocaleData(en);
     NzBadgeModule,
     NzInputNumberModule,
     NzModalModule,
+    NzDescriptionsModule,
   ],
   providers: [AuthenticationGuard, 
     {provide: NZ_I18N, useValue: en_US},

@@ -1,0 +1,20 @@
+<nz-descriptions nzTitle="Product Detail" nzBordered nzLayout="vertical">
+    <nz-descriptions-item nzTitle="Categoty">{{ product.category }}
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Name">{{ product.name }}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Price">{{ product.price | currency: "VND":"symbol" }}
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Discount">{{ product.discount }}%</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Stock">{{ product.stock }}
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="How To User">{{ product.how_to_use }}
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Bought">{{ product.bought }}
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Description">{{ product.description }}
+    </nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Benefit">{{ product.benefit }}
+    </nz-descriptions-item>
+</nz-descriptions>
+<h3>Image</h3>
+<img nz-image width="200px" height="200px" [src]="product.image" alt="" />

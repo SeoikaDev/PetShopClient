@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NzGridModule,
     NzIconModule,
     NzButtonModule,
+    NzImageModule,
     NzPaginationModule,
     AngularFireAuthModule,
     AngularFireStorageModule,

@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ShoppingcartComponent implements OnInit {
   products : CartModel[] = [];
-  
+  total = 0;
   _id = '';
 
   constructor(private cartService : CartService,  
@@ -22,7 +22,19 @@ export class ShoppingcartComponent implements OnInit {
     this.cartInfo();
   }
 
-  changeQuantity(event : any){
+  changeQuantity(product : any, event : any){
+    console.log(product);
+    this.products.forEach(ele => {
+      if(product._id == ele._id && product.amount > event){
+        ele.amount = event;      
+        this.total += (100 * ele.amount * ele.product.price * (1 - 0.01 * ele.product.discount)) / 100;
+      }
+
+      if(product._id == ele._id && product.amount < event){
+        ele.amount = event;      
+        this.total -= (100 * ele.amount * ele.product.price * (1 - 0.01 * ele.product.discount)) / 100;
+      }
+    });
     console.log(event);
   }
 
@@ -31,6 +43,10 @@ export class ShoppingcartComponent implements OnInit {
       if(res.status === 'ok'){
         this.products = res.data.cart;
         this._id = res.data._id;
+        // (100 * data.amount * data.product.price * (1 - 0.01 * data.product.discount)) / 100
+        this.products.forEach(ele => {
+          this.total += (100 * ele.amount * ele.product.price * (1 - 0.01 * ele.product.discount)) / 100;
+        });
         console.log(res.data);
       }
     });

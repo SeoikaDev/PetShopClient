@@ -3,21 +3,42 @@
         <div *ngFor="let item of services" nz-col [nzSpan]="8">
             <nz-card style="margin-bottom: 10px" [nzTitle]="item.type" [nzExtra]="extraTemplate">
                 <p>{{ item.name }}</p>
-                <p>{{ item.price | currency: "VND":"symbol" }}</p>
+                <p>{{ item.price | currency: "VND ":"symbol " }}</p>
             </nz-card>
+            <ng-template #extraTemplate>
+                <button nz-button [nzType]="'primary'" (click)="showModal(item._id, item.price)">
+          <span>Đặt dịch vụ</span>
+        </button>
+            </ng-template>
         </div>
     </div>
 </div>
-<ng-template #extraTemplate>
-    <button nz-button [nzType]="'primary'" (click)="showModal()">
-    <span>Đặt dịch vụ</span>
-  </button>
-</ng-template>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Đặt Dịch Vụ " (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
-        <p>Content one</p>
-        <p>Content two</p>
-        <p>Content three</p>
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="payment_method " nzRequired>Payment Method</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input type="text " id="payment_method" formControlName="payment_method" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="payment_account" nzRequired nzTooltipTitle="What do you want other to call you ">
+                    <span>Payment Account: </span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your nickname! ">
+                    <input nz-input id="payment_account " formControlName="payment_account" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="receive_method" nzRequired>Receive Method</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <nz-input-group>
+                        <input formControlName="receive_method" id="'receive_method'" nz-input />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
     </ng-container>
 </nz-modal>

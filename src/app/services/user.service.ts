@@ -12,13 +12,18 @@ export class UserService {
   helper = new JwtHelperService();
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   url = "http://localhost:5000";
-  
-  constructor(private http : HttpClient, 
+
+  constructor(private http : HttpClient,
     private router: Router,
     private message: NzMessageService) { }
 
   getCurrentUserListCart() : Observable<any>{
     let api = `${this.url}/api/v1/users/current-user`;
+    return this.http.get<any>(api);
+  }
+
+  getUsers() : Observable<any>{
+    let api = `${this.url}/api/v1/users`;
     return this.http.get<any>(api);
   }
 
@@ -48,8 +53,7 @@ export class UserService {
 
 
   sendMail(mail : any){
-    this.http.post(this.url + "/api/v1/send-mail", mail);
-    this.message.create('success', 'Gửi email thành công. Vui lòng kiểm tra email');
+    return this.http.post(this.url + "/api/v1/send-mail", mail);
   }
 
   register(form : any) {
@@ -122,5 +126,10 @@ export class UserService {
     if (removeToken == null) {
       this.router.navigate(['login']);
     }
+  }
+
+  changePassword(user : any){
+    let api = `${this.url}/api/v1/users/change-user-information`;
+    return this.http.post<any>(api, user);
   }
 }

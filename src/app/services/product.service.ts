@@ -16,12 +16,9 @@ export class ProductService {
     return this.http.get<any>(api);
   }
 
-  getProductsById(id : any){
-    let api = `${this.url}/api/v1/products/${id}`;
-    return this.http.get<any>(api)
-    .subscribe((res : any) => {
-      console.log(res);
-    });
+  getProductsById(productId : any){
+    let api = `${this.url}/api/v1/products/${productId}`;
+    return this.http.get<any>(api);
   }
 
   addProduct(form : any){
