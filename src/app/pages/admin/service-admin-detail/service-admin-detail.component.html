@@ -1,0 +1,42 @@
+<form nz-form [formGroup]="form" (ngSubmit)="updateService()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="_id" nzTooltipTitle="What do you want other to call you">
+            <span>Id</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your id!">
+            <input readonly nz-input id="_id" formControlName="_id" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired nzTooltipTitle="What do you want other to call you">
+            <span>Name</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
+            <input nz-input id="name" formControlName="name" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="price" nzRequired nzTooltipTitle="What do you want other to call you">
+            <span>Price</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your price!">
+            <input nz-input id="price" formControlName="price" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="type" nzRequired nzTooltipTitle="What do you want other to call you">
+            <span>Type</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your type!">
+            <input nz-input id="type" formControlName="type" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Update</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

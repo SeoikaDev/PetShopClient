@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './pages/admin/index/index.component';
 import { OrderComponent } from './pages/admin/order/order.component';
 import { ProductComponent } from './pages/admin/product/product.component';
+import { ServiceAdminDetailComponent } from './pages/admin/service-admin-detail/service-admin-detail.component';
 import { ServiceAdminComponent } from './pages/admin/service-admin/service-admin.component';
 import { UserComponent } from './pages/admin/user/user.component';
 import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'admin/home', component: IndexComponent },
   { path: 'admin/product', component: ProductComponent },
   { path: 'admin/service', component: ServiceAdminComponent },
+  { path: 'admin/service-detail/:id', component: ServiceAdminDetailComponent },
   { path: 'admin/user', component: UserComponent },
   { path: 'admin/order', component: OrderComponent },
 

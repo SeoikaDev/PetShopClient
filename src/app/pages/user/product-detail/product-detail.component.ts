@@ -20,8 +20,6 @@ export class ProductDetailComponent implements OnInit {
     private message: NzMessageService) { }
 
   ngOnInit(): void {
-
-
     this.route.params.subscribe(
       (params: Params) => {
         let id = params['id'];
@@ -44,7 +42,7 @@ export class ProductDetailComponent implements OnInit {
   addFavorite(id : any){
     this.productService.addFavorite(id).subscribe(resp =>{
       if(resp.status == 'ok'){
-        this.message.create('success', 'Yêu thích thành công');
+        this.message.create('success', resp.info);
       }
     });
   }

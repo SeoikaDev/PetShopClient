@@ -45,6 +45,8 @@ import { ChangePasswordComponent } from './pages/user/change-password/change-pas
 import { HistoryComponent } from './pages/user/history/history.component';
 import { ProductDetailComponent } from './pages/user/product-detail/product-detail.component';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { ServiceAdminDetailComponent } from './pages/admin/service-admin-detail/service-admin-detail.component';
 
 
 registerLocaleData(en);
@@ -65,7 +67,8 @@ registerLocaleData(en);
     ChangePasswordComponent,
     HistoryComponent,
     ProductDetailComponent,
-    
+    ServiceAdminDetailComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -94,8 +97,9 @@ registerLocaleData(en);
     NzInputNumberModule,
     NzModalModule,
     NzDescriptionsModule,
+    NzTabsModule,
   ],
-  providers: [AuthenticationGuard, 
+  providers: [AuthenticationGuard,
     {provide: NZ_I18N, useValue: en_US},
     {provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
