@@ -49,7 +49,10 @@ export class WelcomeComponent implements OnInit {
   }
 
   addFavorite(id : any){
-    this.productService.addFavorite(id).subscribe(resp =>{
+    let item = {
+      id : id
+    };
+    this.productService.addFavorite(item).subscribe(resp =>{
       if(resp.status == 'ok'){
         this.message.create('success', 'Yêu thích thành công');
       }

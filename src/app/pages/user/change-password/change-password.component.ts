@@ -13,10 +13,18 @@ export class ChangePasswordComponent implements OnInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      this.userService.changePassword(this.validateForm.value).subscribe(
+      let item = {
+        email: this.validateForm.get('email')?.value,
+        password : this.validateForm.get('password')?.value,
+        code : this.validateForm.get('code')?.value,
+      }
+      this.userService.changePassword(item).subscribe(
         res => {
           if(res.status == 'ok'){
-            this.message.create('success', 'Change Password Success!');
+            this.message.create('success', res.info);
+          }
+          else{
+            this.message.create('error', res.error);
           }
         }
       );
@@ -54,7 +62,7 @@ export class ChangePasswordComponent implements OnInit {
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
-      verification_code: [null, [Validators.required]],
+      code: [null, [Validators.required]],
     });
   }
 

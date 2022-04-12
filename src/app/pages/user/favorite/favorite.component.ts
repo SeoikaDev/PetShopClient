@@ -26,6 +26,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   addCart(product : any){
+  
     this.cartService.addCart(product).subscribe((res : any) => {
       if(res.status === 'ok'){
         this.userService.getCurrentUserListCart()
@@ -43,24 +44,31 @@ export class FavoriteComponent implements OnInit {
     });
   }
 
-
   getFavorites(){
     this.userService.getCurrentUserListCart().subscribe((res : any )=> {
       if(res.status == 'ok'){
         let item = res.data.favorite;
-        item.forEach((ele : any) => {
-          console.log(ele._id);   
-            this.productService.getProductsById(ele._id)
-              .subscribe((data : ProductModel) => {
-                console.log(data);   
-                this.favorites.push(data);
-          });
-        });
-        
-        // this.favorites = res.data.favorite;
-        // console.log(res.data.favorite);
+        this.favorites = res.data.favorite;
+        console.log(res.data.favorite);
       }
     })
+  }
+
+  removeFavorite(id : any){
+    console.log(id);
+      let item = {
+        id : id
+      };
+      this.productService.deleteFavorite(item).subscribe(
+        (res :any )=> {
+          if(res.status == 'ok'){
+            this.message.create('success', res.info);
+          }
+          else{
+            this.message.create('error', res.error);
+          }
+        }
+      );
   }
 
 }

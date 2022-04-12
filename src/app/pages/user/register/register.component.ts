@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
       fullname: [null],
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
-      verification_code: [null, [Validators.required, this.confirmationValidator]],
+      checkPassword: [null, [Validators.required, this.confirmationValidator]],
       phoneNumberPrefix: ['+84'],
       phoneNumber: [null, [Validators.required]],
       agree: [false]
