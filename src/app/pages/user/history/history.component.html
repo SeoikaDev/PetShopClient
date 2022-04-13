@@ -1,1 +1,40 @@
-<p>history works!</p>
+<div style="background: #ececec; padding: 30px">
+    <div nz-row [nzGutter]="8">
+        <div nz-col [nzSpan]="8" *ngFor="let item of histories">
+            <nz-card style="margin-bottom: 10px" [nzTitle]="productTitle" [nzCover]="coverTemplate">
+                <p>{{ item.product.name }}</p>
+                <h4>{{ item.product.price | currency: "VND":"symbol" }}</h4>
+                <ng-template #coverTemplate>
+                    <a class="wrapper" [href]="'/product/detail/' + item.product._id">
+                        <img alt="example" [src]="item.product.image" /></a>
+                </ng-template>
+                <ng-template #productTitle>
+                    <div nz-row>
+                        <div nz-col nzFlex="3">{{ item.product.category }}</div>
+
+                        <div nz-col nzFlex="1">
+                            <button nz-button (click)="addCart(item.product)">
+                <i
+                  style="font-size: 20px; color: #08c"
+                  nz-icon
+                  nzType="shopping-cart"
+                  nzTheme="outline"
+                ></i>
+              </button>
+                        </div>
+                        <div nz-col nzFlex="1">
+                            <button nz-button (click)="addFavorite(item._id)">
+                <i
+                  nz-icon
+                  nzType="heart"
+                  [nzTheme]="'twotone'"
+                  [nzTwotoneColor]="'#eb2f96 '"
+                ></i>
+              </button>
+                        </div>
+                    </div>
+                </ng-template>
+            </nz-card>
+        </div>
+    </div>
+</div>

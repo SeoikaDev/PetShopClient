@@ -5,7 +5,7 @@
                 <p>{{ item.name }}</p>
                 <h4>{{ item.price | currency: "VND":"symbol" }}</h4>
                 <ng-template #coverTemplate>
-                    <a class="wrapper" [href]="'/product/detail/' + item._id">
+                    <a (click)="addHistory(item._id)" class="wrapper" [href]="'/product/detail/' + item._id">
                         <img alt="example" [src]="item.image" /></a>
                 </ng-template>
                 <ng-template #productTitle>

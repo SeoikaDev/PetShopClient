@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FavoriteModel } from 'src/app/model/Favorite';
 import { ProductModel } from 'src/app/model/Product';
 import { CartService } from 'src/app/services/cart.service';
+import { HistoryService } from 'src/app/services/history.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -19,6 +20,7 @@ export class FavoriteComponent implements OnInit {
   constructor(private productService : ProductService,
     private userService : UserService,
     private cartService : CartService,
+    private historyService : HistoryService,
     private message: NzMessageService) { }
 
   ngOnInit(): void {
@@ -26,7 +28,6 @@ export class FavoriteComponent implements OnInit {
   }
 
   addCart(product : any){
-  
     this.cartService.addCart(product).subscribe((res : any) => {
       if(res.status === 'ok'){
         this.userService.getCurrentUserListCart()
@@ -52,6 +53,20 @@ export class FavoriteComponent implements OnInit {
         console.log(res.data.favorite);
       }
     })
+  }
+
+  addHistory(id : any){
+    let item = {
+      id : id
+    };
+    this.historyService.addHistory(item).subscribe(resp =>{
+      if(resp.status == 'ok'){
+        this.message.create('success', resp.info);
+      }
+      else{
+        this.message.create('error', resp.error);
+      }
+    });
   }
 
   removeFavorite(id : any){

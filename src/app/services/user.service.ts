@@ -132,4 +132,9 @@ export class UserService {
     let api = `${this.url}/api/v1/users/change-user-information`;
     return this.http.post<any>(api, user);
   }
+
+  updateInfoUser(user : any){
+    let api = `${this.url}/api/v1/users/change-user-information`;
+    return this.http.post<any>(api, user);
+  }
 }

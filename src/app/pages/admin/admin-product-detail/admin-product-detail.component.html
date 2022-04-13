@@ -1,0 +1,75 @@
+<form nz-form [formGroup]="form" (ngSubmit)="updateProduct()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="_id" nzRequired nzTooltipTitle="What do you want other to call you ">
+            <span>Id</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your _id! ">
+            <input readonly nz-input id="_id" formControlName="_id" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired nzTooltipTitle="What do you want other to call you ">
+            <span>Name</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name! ">
+            <input nz-input id="name" formControlName="name" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="category" nzRequired nzTooltipTitle="What do you want other to call you ">
+            <span>Category</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your category! ">
+            <input nz-input id="category" formControlName="category" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="price">Price</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid price! ">
+            <input nz-input formControlName="price" id="price" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="stock" nzRequired>Stock</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your stock! ">
+            <input nz-input type="text" id="stock" formControlName="stock" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="discount" nzRequired>Discount</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nz-input type="text" formControlName="discount" id="discount" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="benefit">Benefit</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid benefit! ">
+            <input nz-input formControlName="benefit" id="benefit" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="how_to_use" nzRequired>How to use</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your how to use! ">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+                <textarea id="how_to_use" rows="4" formControlName="how_to_use" nz-input></textarea>
+            </nz-textarea-count>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired>Description</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your description!">
+            <nz-textarea-count [nzMaxCharacterCount]="100">
+                <textarea id="description" rows="4" formControlName="description" nz-input></textarea>
+            </nz-textarea-count>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Update</button>
+
+        </nz-form-control>
+    </nz-form-item>
+</form>

@@ -1,1 +1,121 @@
-<p>product works!</p>
+<nz-tabset>
+    <nz-tab nzTitle="Form Product">
+        <form nz-form [formGroup]="form" (ngSubmit)="addProduct()">
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired nzTooltipTitle="What do you want other to call you">
+                    <span>Name</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
+                    <input nz-input id="name" formControlName="name" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="category" nzRequired nzTooltipTitle="What do you want other to call you">
+                    <span>Category</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your category!">
+                    <input nz-input id="category" formControlName="category" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="price">Price</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid price!">
+                    <input nz-input formControlName="price" id="price" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="stock" nzRequired>Stock</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your stock!">
+                    <input nz-input type="text" id="stock" formControlName="stock" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="discount" nzRequired>Discount</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input type="text" formControlName="discount" id="discount" />
+                </nz-form-control>
+            </nz-form-item>
+            <!--
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your phone number!">
+                    <nz-upload class="avatar-uploader" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" nzName="avatar" nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
+                        <ng-container *ngIf="!avatarUrl">
+                            <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+                            <div class="ant-upload-text">Upload</div>
+                        </ng-container>
+                        <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+                    </nz-upload>
+                </nz-form-control>
+            </nz-form-item> -->
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="benefit">Benefit</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid benefit!">
+                    <input nz-input formControlName="benefit" id="benefit" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="how_to_use" nzRequired>How to use</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your how to use!">
+                    <nz-textarea-count [nzMaxCharacterCount]="100">
+                        <textarea id="how_to_use" rows="4" formControlName="how_to_use" nz-input></textarea>
+                    </nz-textarea-count>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired>Description</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your description!">
+                    <nz-textarea-count [nzMaxCharacterCount]="100">
+                        <textarea id="description" rows="4" formControlName="description" nz-input></textarea>
+                    </nz-textarea-count>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item nz-row class="register-area">
+                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                    <button nz-button nzType="primary">Register</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </nz-tab>
+    <nz-tab nzTitle="List Product">
+        <nz-table #basicTable [nzData]="products">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Discount</th>
+                    <th>Image</th>
+                    <th>Benefit</th>
+                    <th>How to use</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.category }}</td>
+                    <td>{{ data.price }}</td>
+                    <td>{{ data.stock }}</td>
+                    <td>{{ data.discount }}</td>
+                    <!-- <td>{{ data.image }}</td> -->
+                    <td>{{ data.benefit }}</td>
+                    <td>{{ data.how_to_use }}</td>
+                    <td>{{ data.description }}</td>
+                    <td>
+                        <button (click)="selectProduct(data._id)" nz-button nzType="primary">
+              <i nz-icon nzType="search" nzTheme="outline"></i>
+            </button>
+                        <button (click)="deleteProduct(data)" nz-button nzDanger nzType="primary">
+              <i nz-icon nzType="delete" nzTheme="outline"></i>
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </nz-tab>
+</nz-tabset>

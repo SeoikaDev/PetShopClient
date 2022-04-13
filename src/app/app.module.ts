@@ -47,6 +47,10 @@ import { ProductDetailComponent } from './pages/user/product-detail/product-deta
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { ServiceAdminDetailComponent } from './pages/admin/service-admin-detail/service-admin-detail.component';
+import { UserDetailComponent } from './pages/admin/user-detail/user-detail.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { AdminProductDetailComponent } from './pages/admin/admin-product-detail/admin-product-detail.component';
 
 
 registerLocaleData(en);
@@ -68,6 +72,8 @@ registerLocaleData(en);
     HistoryComponent,
     ProductDetailComponent,
     ServiceAdminDetailComponent,
+    UserDetailComponent,
+    AdminProductDetailComponent,
 
   ],
   imports: [
@@ -98,6 +104,8 @@ registerLocaleData(en);
     NzModalModule,
     NzDescriptionsModule,
     NzTabsModule,
+    NzUploadModule,
+    NzRadioModule,
   ],
   providers: [AuthenticationGuard,
     {provide: NZ_I18N, useValue: en_US},

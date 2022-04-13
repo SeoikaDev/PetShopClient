@@ -7,6 +7,7 @@ import { UploadService } from 'src/app/services/upload.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { HistoryService } from 'src/app/services/history.service';
 
 @Component({
   selector: 'app-welcome',
@@ -30,8 +31,9 @@ export class WelcomeComponent implements OnInit {
   constructor(private productService : ProductService,
     private storage: AngularFireStorage,
     public sanitizer: DomSanitizer,
-    private cartService : CartService,  
+    private cartService : CartService,
     private userService : UserService,
+    private historyService : HistoryService,
     private message: NzMessageService) {
 
     }
@@ -43,7 +45,7 @@ export class WelcomeComponent implements OnInit {
       let imgs = "/product_image/house/img_product_house_6.jpg";
       this.listImage.forEach((ele : any)=> {
          const ref = this.storage.ref(ele);
-          this.image = ref.getDownloadURL();      
+          this.image = ref.getDownloadURL();
       })
     });
   }
@@ -54,7 +56,9 @@ export class WelcomeComponent implements OnInit {
     };
     this.productService.addFavorite(item).subscribe(resp =>{
       if(resp.status == 'ok'){
-        this.message.create('success', 'Yêu thích thành công');
+        this.message.create('success', resp.info);
+      }else{
+        this.message.create('error', resp.error);
       }
     });
   }
@@ -63,9 +67,9 @@ export class WelcomeComponent implements OnInit {
     this.cartService.addCart(product).subscribe((res : any) => {
       if(res.status === 'ok'){
         this.userService.getCurrentUserListCart()
-        .subscribe((res : any) => { 
-          if(res.status === 'ok'){  
-            
+        .subscribe((res : any) => {
+          if(res.status === 'ok'){
+
             this.message.create('success', 'Thêm vào giỏ hàng thành công');
             this.cart = res.cart;
           }
@@ -86,6 +90,20 @@ export class WelcomeComponent implements OnInit {
       // this.profileUrl.subscribe(a => console.log(a));
 
     // console.log(ref.getDownloadURL);
+  }
+
+  addHistory(id : any){
+    let item = {
+      id : id
+    };
+    this.historyService.addHistory(item).subscribe(resp =>{
+      if(resp.status == 'ok'){
+        this.message.create('success', resp.info);
+      }
+      else{
+        this.message.create('error', resp.error);
+      }
+    });
   }
 
 

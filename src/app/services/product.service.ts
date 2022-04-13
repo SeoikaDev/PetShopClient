@@ -23,26 +23,17 @@ export class ProductService {
 
   addProduct(form : any){
     let api = `${this.url}/api/v1/products`;
-    return this.http.post<any>(api, form)
-    .subscribe((res : any) => {
-      console.log(res);
-    });
+    return this.http.post<any>(api, form);
   }
 
   updateProduct(form : any){
     let api = `${this.url}/api/v1/products`;
-    return this.http.put<any>(api, form)
-    .subscribe((res : any) => {
-      console.log(res);
-    });
+    return this.http.put<any>(api, form);
   }
 
   deleteProduct(id : any){
     let api = `${this.url}/api/v1/products`;
-    return this.http.delete<any>(api, id)
-    .subscribe((res : any) => {
-      console.log(res);
-    });
+    return this.http.delete<any>(api, id);
   }
 
   addFavorite(id : any){
