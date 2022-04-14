@@ -48,7 +48,7 @@
                 </ul>
             </li>
 
-            <li nz-submenu nzOpen nzTitle="Trang quản trị" nzIcon="form">
+            <li *ngIf="role" nz-submenu nzOpen nzTitle="Trang quản trị" nzIcon="form">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
                         <a routerLink="/admin/home">Trang chủ</a>

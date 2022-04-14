@@ -69,7 +69,6 @@ export class WelcomeComponent implements OnInit {
         this.userService.getCurrentUserListCart()
         .subscribe((res : any) => {
           if(res.status === 'ok'){
-
             this.message.create('success', 'Thêm vào giỏ hàng thành công');
             this.cart = res.cart;
           }

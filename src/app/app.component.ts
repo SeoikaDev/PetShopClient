@@ -13,11 +13,10 @@ export class AppComponent implements OnInit{
   isLogin = false;
   cart = [];
   quantityCart = 0;
-
+  role = false;
 
   constructor(private userService : UserService,
     private router : Router){
-
   }
 
   ngOnInit(): void {
@@ -28,6 +27,11 @@ export class AppComponent implements OnInit{
   getCurrentUserListCart(){
     this.userService.getCurrentUserListCart().subscribe((res : any) => { 
       if(res.status === 'ok'){
+        if(res.data.role == 'admin'){
+          this.role = true;
+        }else{
+          this.role = false;
+        }
         this.cart = res.data.cart;
         this.cart.forEach((ele : any )=> {
           this.quantityCart += ele.amount;

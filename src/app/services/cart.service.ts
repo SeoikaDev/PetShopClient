@@ -18,6 +18,10 @@ export class CartService {
     return this.http.post<any>(this.api + "cart",  ProductModel);
   }
 
+  updateCart(cart : any){
+    return this.http.put<any>(this.api + "cart", cart);
+  }
+
   deleteCart(id : any){
     return this.http.delete<any>(this.api + `cart/${id}`);
   }

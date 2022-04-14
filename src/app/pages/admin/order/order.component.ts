@@ -11,6 +11,7 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrderComponent implements OnInit {
   orders : any[] = [];
+  data : any[] = [];
   form !: FormGroup;
 
   constructor(private orderService : OrderService,
@@ -26,8 +27,12 @@ export class OrderComponent implements OnInit {
     this.orderService.getOrders().subscribe(
       res => {
         if(res.status == 'ok'){
+            this.orders = res.data;
+            this.orders.forEach((element : any )=> {
+              this.data = element.orders;
+              console.log(element);
+            });
             console.log(res.data);
-            this.orders = res.data.orders;
         }
       }
     );
