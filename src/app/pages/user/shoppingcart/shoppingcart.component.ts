@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CartModel } from 'src/app/model/Cart';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,33 +14,55 @@ export class ShoppingcartComponent implements OnInit {
   products : CartModel[] = [];
   total = 0;
   _id = '';
+  validateForm !: FormGroup;
 
-  constructor(private cartService : CartService,  
+  constructor(private cartService : CartService,
     private userService : UserService,
-    private message: NzMessageService) { }
+    private message: NzMessageService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.cartInfo();
+    this.validateForm = this.fb.group({
+      payment_method: [null],
+      payment_account: [null],
+      receive_method: [null],
+      type : ['service']
+    });
+  }
+
+  submitForm(): void {
+    if (this.validateForm.valid) {
+      console.log('submit', this.validateForm.value);
+
+    } else {
+      Object.values(this.validateForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
 
   changeQuantity(product : any, event : any){
     console.log(product);
     this.products.forEach(ele => {
       if(product._id == ele._id && product.amount > event){
-        ele.amount = event;      
+        ele.amount = event;
         this.total += (100 * ele.amount * ele.product.price * (1 - 0.01 * ele.product.discount)) / 100;
       }
 
       if(product._id == ele._id && product.amount < event){
-        ele.amount = event;      
+        ele.amount = event;
         this.total -= (100 * ele.amount * ele.product.price * (1 - 0.01 * ele.product.discount)) / 100;
       }
     });
-    console.log(event);
+    console.log(this.total );
   }
 
   cartInfo(){
-    this.userService.getCurrentUserListCart().subscribe((res : any) => { 
+    this.userService.getCurrentUserListCart().subscribe((res : any) => {
       if(res.status === 'ok'){
         this.products = res.data.cart;
         this._id = res.data._id;
@@ -69,10 +92,14 @@ export class ShoppingcartComponent implements OnInit {
       (resp : any ) =>  {
         if(resp.status == 'ok'){
           this.products = [];
-          this.message.create('success', 'Xóa sản phẩm thành công');
+          this.message.create('success', 'Xóa giỏ hàng thành công');
         }
       }
     )
+  }
+
+  purchaseCart(){
+    
   }
 
 }

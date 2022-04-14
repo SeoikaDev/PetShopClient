@@ -19,11 +19,11 @@ export class CartService {
   }
 
   deleteCart(id : any){
-    return this.http.delete<any>(this.api + "cart", id);
+    return this.http.delete<any>(this.api + `cart/${id}`);
   }
 
   clearCart(){
-    return this.http.delete<any>(this.api + "cart/delete-all");
+    return this.http.delete<any>(this.api + "cart/delete/all");
   }
 }
 

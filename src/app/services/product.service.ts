@@ -32,8 +32,8 @@ export class ProductService {
   }
 
   deleteProduct(id : any){
-    let api = `${this.url}/api/v1/products`;
-    return this.http.delete<any>(api, id);
+    let api = `${this.url}/api/v1/products/${id}`;
+    return this.http.delete<any>(api);
   }
 
   addFavorite(id : any){

@@ -13,4 +13,12 @@ export class OrderService {
   addOrder(order : any){
     return this.http.post<any>(this.url + "order", order);
   }
+
+  getOrders(){
+    return this.http.get<any>(this.url + "order");
+  }
+
+  updateOrder(order : any){
+    return this.http.put<any>(this.url + "order", order);
+  }
 }

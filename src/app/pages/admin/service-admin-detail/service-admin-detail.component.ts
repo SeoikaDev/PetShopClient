@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ServiceModel } from 'src/app/model/Service';
+import { ServiceModel } from "src/app/model/ServiceModel";
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -20,8 +20,8 @@ export class ServiceAdminDetailComponent implements OnInit {
     private router : Router) {
     }
 
-   
-  ngOnInit(): void { 
+
+  ngOnInit(): void {
     this.form = this.fb.group({
         _id : [null, Validators.required],
         name : [null, Validators.required],

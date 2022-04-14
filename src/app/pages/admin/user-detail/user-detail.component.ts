@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params} from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,17 +14,26 @@ export class UserDetailComponent implements OnInit {
   constructor(private message: NzMessageService,
     private userService : UserService,
     private fb : FormBuilder,
-    private router : Router) { }
+    private router : Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        let id = params['id'];
+        console.log(params['id']);
+        this.getUserByEmail(id);
+      });
+
+
     this.form = this.fb.group({
       username: [null, [Validators.required]],
-      fullname: [null],
+      full_name: [null],
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
       phoneNumberPrefix: ['+84'],
-      phoneNumber: [null, [Validators.required]],
+      phone_number: [null, [Validators.required]],
       role : [null]
     });
   }
@@ -48,7 +57,7 @@ export class UserDetailComponent implements OnInit {
       res => {
         if(res.status  == 'ok'){
           console.log(res.data);
-          this.form.patchValue( res.data);
+          this.form.patchValue(res.data);
         }
       }
     );

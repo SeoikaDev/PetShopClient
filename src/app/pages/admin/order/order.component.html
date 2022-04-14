@@ -1,1 +1,35 @@
-<p>order works!</p>
+<nz-tabset>
+    <nz-tab nzTitle="List Product">
+        <nz-table #basicTable [nzData]="orders">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Payment Account</th>
+                    <th>Receive Method</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                    <td>{{ data.service }}</td>
+                    <td>{{ data.date }}</td>
+                    <td>{{ data.total_price }}</td>
+                    <td>{{ data.payment_method }}</td>
+                    <td>{{ data.payment_account }}</td>
+                    <!-- <td>{{ data.image }}</td> -->
+                    <td>{{ data.receive_method }}</td>
+                    <td>{{ data.status }}</td>
+                    <td>
+                        <button (click)="selectProduct(data._id)" nz-button nzType="primary">
+              <i nz-icon nzType="search " nzTheme="outline"></i>
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </nz-tab>
+</nz-tabset>

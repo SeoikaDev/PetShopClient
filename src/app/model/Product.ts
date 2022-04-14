@@ -1,4 +1,5 @@
 export interface ProductModel{
+  _id : string,
     benefit: string,
     bought: string,
     category: string,

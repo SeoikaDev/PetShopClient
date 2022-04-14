@@ -12,7 +12,7 @@
             <span>Fullname</span>
         </nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your fullname!">
-            <input nz-input id="fullname" formControlName="fullname" />
+            <input nz-input id="fullname" formControlName="full_name" />
         </nz-form-control>
     </nz-form-item>
 
@@ -50,38 +50,24 @@
                         <nz-option nzLabel="+84" nzValue="+84"></nz-option>
                     </nz-select>
                 </ng-template>
-                <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+                <input formControlName="phone_number" id="'phoneNumber'" nz-input />
             </nz-input-group>
         </nz-form-control>
     </nz-form-item>
 
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="role" nzRequired>Phone Number</nz-form-label>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="role" nzRequired>Role</nz-form-label>
         <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="form.controls['role']" nzErrorTip="Please input your phone number!">
-            <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
-                <ng-template #addOnBeforeTemplate>
-                    <nz-select formControlName="role" class="phone-select">
-                        <nz-option nzLabel="User" nzValue="user"></nz-option>
-                        <nz-option nzLabel="Admin" nzValue="admin"></nz-option>
-                    </nz-select>
-                </ng-template>
-            </nz-input-group>
+            <nz-radio-group formControlName="role">
+                <label nz-radio nzValue="user">User</label>
+                <label nz-radio nzValue="admin">Admin</label>
+            </nz-radio-group>
         </nz-form-control>
     </nz-form-item>
-
+   
     <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <label nz-checkbox formControlName="agree">
-  <span>
-    I have read the
-    <a>agreement</a>
-  </span>
-</label>
-        </nz-form-control>
-    </nz-form-item>
-    <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary">Register</button>
+            <button nz-button nzType="primary">Update</button>
         </nz-form-control>
     </nz-form-item>
 </form>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ServiceModel } from 'src/app/model/Service';
+import { ServiceModel } from "src/app/model/ServiceModel";
 import { OrderService } from 'src/app/services/order.service';
 import { ServiceService } from 'src/app/services/service.service';
 
@@ -31,10 +31,10 @@ export class ServiceComponent implements OnInit {
       type : ['service']
     });
   }
-
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
+
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {

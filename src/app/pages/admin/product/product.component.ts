@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { ProductModel } from 'src/app/model/Product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
   products : any[] = [];
   form !: FormGroup;
+
   loading = false;
   avatarUrl?: string;
 
@@ -79,10 +81,12 @@ export class ProductComponent implements OnInit {
       }
     );
   }
-  deleteProduct(product : any){
-    this.productService.deleteProduct(product).subscribe(
+  deleteProduct(product : ProductModel){
+    console.log(product);
+    this.productService.deleteProduct(product._id).subscribe(
       (res : any )=> {
         if(res.status == 'ok'){
+          this.products.filter(pro => pro._id == product._id);
           this.form.reset();
           this.message.create('success', res.info);
           this.router.navigate(['/admin/product']);

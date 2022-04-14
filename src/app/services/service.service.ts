@@ -31,8 +31,8 @@ export class ServiceService {
     return this.http.put<any>(this.api + "services", service);
   }
 
-  deleteServices(service : any){
-    return this.http.delete<any>(this.api + "services", service);
+  deleteServices(id : any){
+    return this.http.delete<any>(this.api + `services/${id}`,);
   }
 
 

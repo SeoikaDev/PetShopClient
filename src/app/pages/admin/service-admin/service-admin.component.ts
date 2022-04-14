@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ServiceModel } from 'src/app/model/Service';
+import { ServiceModel } from "src/app/model/ServiceModel";
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -68,12 +68,12 @@ export class ServiceAdminComponent implements OnInit {
     }
   }
 
-  deleteService(service : ServiceModel){
-    console.log(service);
-    this.serviceService.deleteServices(service).subscribe(
+  deleteService(id : any){
+    console.log(id);
+    this.serviceService.deleteServices(id).subscribe(
       (res : any )=> {
         if(res.status == 'ok'){
-          this.services.filter(ser => ser._id === service._id);
+          this.services.filter(ser => ser._id === id);
           this.message.create('success', res.info);
         }
         else{
