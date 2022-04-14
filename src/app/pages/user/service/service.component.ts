@@ -13,7 +13,7 @@ import { ServiceService } from 'src/app/services/service.service';
 export class ServiceComponent implements OnInit {
   services : ServiceModel[] = [];
   isVisible = false;
-  id = 0;
+  id = "";
   validateForm !: FormGroup;
 
 
@@ -59,6 +59,7 @@ export class ServiceComponent implements OnInit {
   }
 
   showModal(id : any, amount : any){
+    this.id = id;
     console.log(this.id);
     this.isVisible = true;
   }
@@ -66,11 +67,21 @@ export class ServiceComponent implements OnInit {
   handleOk(): void {
     console.log('Button ok clicked!');
     console.log(this.validateForm.value);
+    let service = {
+      service : this.id,
+      type : this.validateForm.get('type')?.value,
+      payment_method : this.validateForm.get('payment_method')?.value,
+      payment_account: this.validateForm.get('payment_account')?.value,
+      receive_method: this.validateForm.get('receive_method')?.value,
+    }
     this.isVisible = false;
-    this.orderService.addOrder(this.validateForm.value).subscribe(
+    this.orderService.addOrder(service).subscribe(
       res => {
         if(res.status == 'ok'){
-          this.message.create('success', 'Đặt dịch vụ thành công');
+          this.message.create('success', res.info);
+        }else{
+          this.message.create('error', res.error);
+
         }
       }
     );

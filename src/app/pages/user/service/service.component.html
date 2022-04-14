@@ -39,6 +39,14 @@
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="type" nzRequired>Type</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <nz-input-group>
+                        <input formControlName="type" id="'type'" nz-input />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
         </form>
     </ng-container>
 </nz-modal>
